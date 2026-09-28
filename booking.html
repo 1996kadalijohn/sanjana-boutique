@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Book an appointment or send an online order enquiry to Sanjana Boutique in Sainikpuri, Secunderabad.">
+<meta name="theme-color" content="#5a1e2b"><meta property="og:title" content="Book & Order | Sanjana Boutique"><meta property="og:description" content="Book a styling, bridal or stitching appointment, or send a collection order enquiry online."><meta property="og:image" content="https://1996kadalijohn.github.io/sanjana-boutique/assets/og-image.svg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+<title>Book & Order | Sanjana Boutique</title>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="index.html"><img class="header-logo" src="assets/sanjana-logo.svg" alt="Sanjana Boutique"></a><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button><nav class="nav"><a href="index.html">Home</a><a href="collections.html">Collections</a><a href="services.html">Services</a><a href="lookbook.html">Lookbook</a><a class="nav-cta" href="#booking">Book / Order</a></nav></header>
+<main>
+<section class="page-hero booking-hero"><p class="eyebrow">ONLINE ENQUIRY</p><h1>Book your visit.<br><em>Order your look.</em></h1><p>Tell us what you need and we’ll receive your request on WhatsApp. We’ll confirm availability, fitting details and the next steps with you.</p></section>
+<section class="booking-section section" id="booking">
+<div class="booking-intro"><p class="eyebrow">STEP 01 · YOUR DETAILS</p><h2>Let's make it<br><em>personal.</em></h2><p>Choose an appointment or order enquiry, share your preferred date and tell us what you have in mind.</p><div class="booking-note"><strong>How it works</strong><span>1. Submit your request</span><span>2. We confirm on WhatsApp</span><span>3. Visit, fitting or order details are finalised</span></div></div>
+<form class="booking-form" id="bookingForm">
+<div class="form-tabs" role="tablist"><button type="button" class="form-tab active" data-type="Appointment">Book an Appointment</button><button type="button" class="form-tab" data-type="Order">Order / Enquire</button></div>
+<input type="hidden" id="requestType" value="Appointment">
+<div class="form-grid">
+<label>Full name<input id="customerName" required placeholder="Your name"></label>
+<label>Mobile number<input id="customerPhone" type="tel" required placeholder="+91 XXXXX XXXXX"></label>
+<label>What do you need?<select id="serviceType" required><option value="">Select one</option><option>Personal Styling</option><option>Custom Blouse Stitching</option><option>Bridal Consultation</option><option>Saree / Collection Enquiry</option><option>Other</option></select></label>
+<label>Preferred date<input id="preferredDate" type="date" required></label>
+<label>Preferred time<select id="preferredTime" required><option value="">Select a time</option><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Flexible</option></select></label>
+<label>Quantity<select id="quantity"><option>1</option><option>2</option><option>3</option><option>4+</option></select></label>
+<label class="full">Message / requirements<textarea id="requirements" rows="5" placeholder="Tell us about the saree, blouse, occasion, colours, fitting or anything else you need..."></textarea></label>
+<label class="check full"><input type="checkbox" id="consent" required><span>I agree to share these details with Sanjana Boutique for this enquiry.</span></label>
+</div>
+<button class="button button-dark submit-booking" type="submit">Send request on WhatsApp <span>↗</span></button>
+<p class="form-disclaimer">This is an enquiry/request form. Availability, pricing, payment and final order confirmation will be confirmed by Sanjana Boutique.</p>
+</form>
+</section>
+<section class="booking-benefits section"><div><span>01</span><h3>Personal attention</h3><p>Share your occasion and preferences before you visit.</p></div><div><span>02</span><h3>Easy WhatsApp confirmation</h3><p>Your request goes directly to the boutique team.</p></div><div><span>03</span><h3>Clear next steps</h3><p>We confirm availability, fitting and order details with you.</p></div></section>
+<section class="contact section"><div class="contact-inner"><div><p class="eyebrow">NEED HELP?</p><h2>Talk to<br><em>Sanjana.</em></h2></div><div class="contact-details"><div><small>WHATSAPP</small><a href="https://wa.me/917989575937" target="_blank" rel="noopener">+91 79895 75937</a></div><div><small>INSTAGRAM</small><a href="https://www.instagram.com/uma.9227/" target="_blank" rel="noopener">@uma.9227</a></div><div><small>LOCATION</small><p>830, Defence Colony, Sainikpuri<br>Secunderabad, Telangana 500094</p></div></div></div></section>
+</main>
+<a class="floating-wa" href="https://wa.me/917989575937" target="_blank" rel="noopener">WhatsApp <span>↗</span></a>
+<footer><div class="brand footer-brand"><img class="brand-logo" src="assets/sanjana-logo.svg" alt="Sanjana Boutique"></div><span>© 2026 Sanjana Boutique</span></footer>
+<script>
+const tabs=document.querySelectorAll('.form-tab'), type=document.getElementById('requestType');
+tabs.forEach(tab=>tab.addEventListener('click',()=>{tabs.forEach(t=>t.classList.remove('active'));tab.classList.add('active');type.value=tab.dataset.type;}));
+const date=document.getElementById('preferredDate'); date.min=new Date().toISOString().split('T')[0];
+document.getElementById('bookingForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const v=id=>document.getElementById(id).value.trim();
+ const msg=[
+  'Hi Sanjana Boutique, I would like to make an online '+v('requestType').toLowerCase()+'.',
+  '',
+  '*Customer Details*',
+  'Name: '+v('customerName'),
+  'Mobile: '+v('customerPhone'),
+  '',
+  '*Request*',
+  'Type: '+v('serviceType'),
+  'Preferred date: '+v('preferredDate'),
+  'Preferred time: '+v('preferredTime'),
+  'Quantity: '+v('quantity'),
+  'Requirements: '+(v('requirements')||'Not specified'),
+  '',
+  'Please confirm availability and next steps. Thank you!'
+ ].join('\n');
+ window.open('https://wa.me/917989575937?text='+encodeURIComponent(msg),'_blank','noopener');
+});
+</script>
+<style>
+.booking-hero{background:var(--ivory)}.booking-section{display:grid;grid-template-columns:.72fr 1.28fr;gap:8vw;align-items:start}.booking-intro h2{font-size:clamp(55px,6vw,78px)}.booking-intro>p:not(.eyebrow){color:var(--muted);font-size:14px;max-width:430px}.booking-note{margin-top:35px;padding:22px;border-left:2px solid var(--gold);display:grid;gap:8px;font-size:12px;color:var(--muted)}.booking-note strong{font:600 25px var(--serif);color:var(--ink);margin-bottom:4px}.booking-form{background:#fff;padding:34px;border:1px solid var(--line);box-shadow:0 20px 55px rgba(45,28,23,.06)}.form-tabs{display:grid;grid-template-columns:1fr 1fr;margin:-34px -34px 30px}.form-tab{padding:17px;border:0;border-bottom:1px solid var(--line);background:#f4eee5;color:var(--muted);font:600 11px var(--sans);letter-spacing:.06em;cursor:pointer}.form-tab.active{background:var(--wine);color:#fff}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}label{font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--muted)}input,select,textarea{display:block;width:100%;margin-top:8px;border:1px solid var(--line);background:#fcfaf6;padding:13px 14px;font:400 13px var(--sans);color:var(--ink);outline:none;border-radius:0}input:focus,select:focus,textarea:focus{border-color:var(--gold)}textarea{resize:vertical}.full{grid-column:1/-1}.check{display:flex;align-items:flex-start;gap:10px;letter-spacing:0;font-weight:400}.check input{width:16px;margin:0;margin-top:1px}.check span{font-size:10px;line-height:1.5}.submit-booking{border:0;cursor:pointer;margin-top:8px;width:100%}.form-disclaimer{font-size:10px;color:var(--muted);margin:16px 0 0;line-height:1.5}.booking-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-top:0;padding-bottom:0}.booking-benefits>div{padding:45px 30px 45px 0;border-right:1px solid var(--line)}.booking-benefits>div:not(:first-child){padding-left:30px}.booking-benefits>div:last-child{border-right:0}.booking-benefits span{color:var(--gold);font-size:9px;letter-spacing:.2em}.booking-benefits h3{font:600 32px var(--serif);margin:20px 0 8px}.booking-benefits p{color:var(--muted);font-size:12px;max-width:280px}@media(max-width:800px){.booking-section{grid-template-columns:1fr;gap:45px}.booking-form{padding:22px}.form-tabs{margin:-22px -22px 24px}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.booking-benefits{grid-template-columns:1fr}.booking-benefits>div,.booking-benefits>div:not(:first-child){padding:28px 0;border-right:0;border-bottom:1px solid var(--line)}.booking-benefits>div:last-child{border-bottom:0}.booking-benefits h3{margin:10px 0 5px}}
+</style>
+</body></html>
